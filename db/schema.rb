@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_145940) do
+ActiveRecord::Schema.define(version: 2020_05_03_161155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,18 +27,18 @@ ActiveRecord::Schema.define(version: 2020_05_03_145940) do
     t.string "details"
     t.string "youtube"
     t.string "site"
-    t.bigint "souscategorie_id", null: false
+    t.bigint "souscategory_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["souscategorie_id"], name: "index_projets_on_souscategorie_id"
+    t.index ["souscategory_id"], name: "index_projets_on_souscategory_id"
   end
 
   create_table "souscategories", force: :cascade do |t|
     t.string "name"
-    t.bigint "categorie_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["categorie_id"], name: "index_souscategories_on_categorie_id"
+    t.index ["category_id"], name: "index_souscategories_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,6 +53,6 @@ ActiveRecord::Schema.define(version: 2020_05_03_145940) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "projets", "souscategories", column: "souscategorie_id"
-  add_foreign_key "souscategories", "categories", column: "categorie_id"
+  add_foreign_key "projets", "souscategories"
+  add_foreign_key "souscategories", "categories"
 end

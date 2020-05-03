@@ -1,3 +1,3 @@
 class Projet < ApplicationRecord
-  belongs_to :souscategorie
+  belongs_to :souscategory
 end

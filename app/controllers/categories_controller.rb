@@ -1,18 +1,19 @@
 class CategoriesController < ApplicationController
+  skip_before_action :authenticate_user!
   def show
-    @categorie = Categorie.find(params[:id])
+    @categorie = Category.find(params[:id])
   end
 
   def edit
-    @categorie = Categorie.find(params[:id])
+    @categorie = Category.find(params[:id])
   end
 
   def index
-    @categories = Categorie.all
+    @categories = Category.all
   end
 
   def create
-    @categorie = Categorie.new(categorie_params)
+    @categorie = Category.new(category_params)
 
 
     if @categorie.save
@@ -23,24 +24,24 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @categorie = Categorie.find(params[:id])
+    @categorie = Category.find(params[:id])
     @categorie.destroy
     redirect_to root_path
   end
 
   def update
-    @categorie = Categorie.find(params[:id])
+    @categorie = Category.find(params[:id])
     @categorie.update(categorie_params)
     redirect_to categorie_path(@categorie)
   end
 
   def new
-    @categorie = categorie.newS
+    @categorie = Category.new
   end
 
   private
 
-  def categorie_params
-  params.require(:categorie).permit(:name)
+  def category_params
+  params.require(:category).permit(:name)
 end
 end

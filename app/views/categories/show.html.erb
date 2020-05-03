@@ -1,0 +1,15 @@
+<h1><%= @categorie.name %></h1>
+<ul>
+<% @categorie.souscategories.each do |souscat| %>
+<ul>
+<li><%= souscat.name %></li>
+</ul>
+<% souscat.projets.each do |projet| %>
+<li><%= projet.name %></li>
+<li><%= projet.extrait %></li>
+<li><%= projet.details %></li>
+<li><%= projet.youtube %></li>
+<li><%= projet.site %>
+<% end %></li>
+<% end %>
+</ul>
